@@ -63,7 +63,7 @@
                             <Button Style="{StaticResource menuButton}" Background="#7B5CD6" Foreground="White">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Members"/>
+                                    <TextBlock Text="İlaçlar"/>
                                 </StackPanel>
                             </Button>
 
@@ -111,7 +111,7 @@
                 <Grid Width="300" HorizontalAlignment="Left">
                     <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search here ..."
-                           Visibility="{Binding ElementName=textBoxSearch, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+                           Visibility="{Binding ElementName=textBoxSearch, Converter={StaticResource BoolToVis}}" />
 
                     <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}"/>
 
@@ -157,7 +157,7 @@
                 <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
                     <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search in Members ..."
-                           Visibility="{Binding ElementName=textBoxFilter, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" />
+                           Visibility="{Binding ElementName=textBoxFilter,  Converter={StaticResource BoolToVis}}" />
 
                     <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
                 </Grid>

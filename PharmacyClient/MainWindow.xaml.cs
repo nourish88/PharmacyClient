@@ -17,20 +17,25 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         var converter = new BrushConverter();
-        ObservableCollection<MedicineViewModel> medicines = new ObservableCollection<MedicineViewModel>();
-   
+     
 
+        GetMedicines();
+    }
+
+    public void GetMedicines()
+    {
+        ObservableCollection<MedicineViewModel> medicines = new ObservableCollection<MedicineViewModel>();
         var client = new HttpClient();
-      
-        string url = "http://localhost:5421/medicines";
+
+        string url = "https://localhost:7220/medicines";
         HttpRequestMessage m = new HttpRequestMessage(HttpMethod.Get, url);
         HttpResponseMessage resp = client.Send(m);
 
 
-        
 
 
-   
+
+
 
         string json = resp.Content.ReadAsStringAsync().Result;
 
@@ -46,8 +51,8 @@ public partial class MainWindow : Window
             };
             medicines.Add(med);
         }
-        
-      
+
+
 
 
 
@@ -86,7 +91,7 @@ public partial class MainWindow : Window
     private void OpenModal_Click(object sender, RoutedEventArgs e)
     {
         // Assuming 'MyModalDialog' is a Window that represents your modal dialog
-        var modalDialog = new ConsumerInsertForm
+        var modalDialog = new ConsumerInsertForm(this)
         {
             Owner = this // Set the owner window
         };

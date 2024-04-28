@@ -5,7 +5,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:userControls="clr-namespace:PharmacyClient.View.UserControls"
        
-        Title="Modal Dialog" Height="424" Width="389"
+        Title="İlaç Ekleme Formu" Height="424" Width="389"
         WindowStartupLocation="CenterScreen"
       >
     <Window.Resources>
@@ -31,9 +31,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBox Visibility="Hidden"></TextBox>
-            <userControls:ClearableTextBox Grid.Row="1" Height="40" Placeholder="Name" Margin="32,2,32,23" Grid.RowSpan="2"/>
-            <userControls:ClearableTextBox Grid.Row="2" Height="40" Placeholder="asd" Margin="32,8,32,47" Grid.RowSpan="2" Loaded="ClearableTextBox_Loaded"/>
-            <Button Grid.Row="3" Style="{StaticResource saveButton}" Click="SaveButton_Click" Margin="0,24,40,2" Width="112">
+            <userControls:ClearableTextBox  x:Name="txtMedicineName" Grid.Row="1"  Margin="32,2,32,61" Grid.RowSpan="3" Placeholder="Name"/>
+            <userControls:ClearableTextBox  x:Name="txtMedicinePrice" Grid.Row="3" PreviewTextInput="NumberValidationTextBox" Placeholder="Price" Margin="34,48,30,-43"  />
+            <Button Grid.Row="3" Style="{StaticResource saveButton}" Click="SaveButton_Click" Margin="0,140,34,-60" Width="112">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                     <TextBlock Text="Save"/>

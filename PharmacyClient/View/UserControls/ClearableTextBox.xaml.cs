@@ -1,23 +1,39 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PharmacyClient.View.UserControls;
 
-public partial class ClearableTextBox : UserControl
+public partial class ClearableTextBox : UserControl, INotifyPropertyChanged
 {
     public ClearableTextBox()
     {
+        DataContext = this;
         InitializeComponent();
+
     }
 
     private string placeholder;
 
+    public event PropertyChangedEventHandler? PropertyChanged;
+
     public string Placeholder
     {
         get { return placeholder; }
-        set { placeholder = value; }
+        set
+        {
+            placeholder = value;
+            OnPropertyChanged();
+        }
     }
-    private void btnClear_Click(object sender,RoutedEventArgs e)
+
+    private void OnPropertyChanged([CallerMemberName]string? propertyName=null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private void btnClear_Click(object sender, RoutedEventArgs e)
     {
         txtInput.Clear();
         txtInput.Focus();
